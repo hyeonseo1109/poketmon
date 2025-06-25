@@ -36,6 +36,7 @@ body {
     background-color: white;
     box-shadow: 0 0 30px 10px rgba(97, 198, 29, 0.7); /* 가로 세로 흐림정도 번짐정도 색상*/
     border-radius: 20px;
+    margin: 100px;
 }
 
 .logobox {
