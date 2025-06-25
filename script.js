@@ -92,10 +92,10 @@ function random () {
         .then(evoData => {  //진화 관련 내용
             evoNames = getAllEvos(evoData.chain);   // 진화하는 애들 이름 가져오는 함수에 데이터의 체인 부분을 넣음
                                                     //함수가 돌면서 체인에서 진화 포켓몬 이름을 뽑아옴. ex: ["pichu", "pikachu", "raichu"];
-            evoIndex = evoNames.findIndex(name => name.toLowerCase() === currentPokemonName);
+            evoIndex = evoNames.findIndex(name => name.toLowerCase() === currentPokemonName.toLowerCase());
                 //진화 이름들 배열에서 -> 영어로 된 이름들 소문자로 바꿔서 하나하나 돌면서 -> 현재 포켓몬이랑 똑같은 걸 찾아서 번호 매김. 
 
-            if (evoNames.length > 1) {  //진화이름 배열의 길이가 1 초과 = 진화를 한 번이라도 하는 애들이면
+            if (evoNames.length > 1 && evoIndex < evoNames.length - 1) {  //진화이름 배열의 길이가 1 초과 = 진화를 한 번이라도 하는 애들이고, 현재 포켓몬이 마지막 단계가 아니면 버튼 보이게 함
                 evo.style.display = "block"; // 버튼 보이게
             } else {
                 evo.style.display = "none"; // 아니면 버튼 숨김
@@ -132,10 +132,13 @@ evo.onclick = () => {
                 const koreaInfo = speciesData.flavor_text_entries.find(d => d.language.name === 'ko')?.flavor_text || '알 수 없다.';
                 information.innerHTML = koreaInfo;
                 // 진화가 마지막이면 버튼 숨김
-                if (evoIndex === evoNames.length - 1) { //if로 쭉 index 늘리다가 만약 마지막에 도달했다면 숨기기
+                if (evoIndex >= evoNames.length - 1) { //if로 쭉 index 늘리다가 만약 마지막에 도달했다면 숨기기
                     evo.style.display = "none";
                 }
             })
+    } else {
+        // 더 진화할 거 없으면 버튼 숨기기 (이미 최종진화인데도 버튼이 안 사라지는 경우가 가끔 있어 추가함)
+        evo.style.display = "none";
     }
 }
 
