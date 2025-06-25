@@ -1,0 +1,195 @@
+/*!----------전체 설정---------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 100;
+    line-height: 1.4;
+    font-family: 'Wanted Sans', sans-serif;
+}
+@import url('https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css');
+/* 
+@font-face {
+    font-family: 'NoonnuBasicGothicRegular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg,rgb(206, 255, 180), rgb(182, 248, 147) 60%,rgb(155, 228, 115));
+}
+
+.container {
+    display: flex;
+    border: 3px solid #666;
+    height: auto;
+    width: 350px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(129, 161, 0, 0.5);
+    border-radius: 20px;
+}
+
+.logobox {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    border-bottom: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(254, 37, 37);
+    box-shadow: 0 2px 10px rgb(154, 154, 154);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+
+}
+.logo {
+    display: flex;
+    background-image: url("https://pokemonkorea.co.kr/img/main_logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 70px;
+    width: 150px;
+}
+.poket {
+    border-bottom: 1px solid black;
+    height: 350px;
+    width: 100%;
+}
+
+/*!--------포켓볼---------*/
+.poketball {
+    background: linear-gradient(to bottom, rgb(241, 46, 46) 10%, rgb(228, 0, 0) 20%, rgb(166, 0, 0) 50%,white 50%, rgb(208, 208, 208) 100%);
+    height: 80px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 50px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    margin: 10px;
+    transform: rotate(-20deg);
+    z-index: 10;
+}
+.poketball::before {
+    content: '';
+    position: absolute;
+    top: 48%;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+.poketball::after {
+    content: '';
+    position: absolute;
+    bottom: 35%;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    left: 35%;
+    border: 4px solid black;
+    border-radius: 50px;
+}
+
+.light {
+    width: 140px;
+    height: 100px;
+    background: yellow;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /*? 꼭짓점의 좌표를 (x y)로 나열함. */
+    opacity: 0.8;                                   /*? (첫 번째 꼭짓점, 두 번째, 세 번째) */
+    position: relative;
+    transform: rotate(-40deg);
+    top: -15px;
+    left: 35px;
+    
+}
+
+/*!--------------이미지-------------*/
+#image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ebebeb;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    border: 3px solid yellow;
+    box-shadow: 0 0 10px yellow;
+    position: relative;
+    top: -80px;
+    left: 80px;
+}
+#image img {
+    height: 200px;
+    width: 200px;
+    animation: updown 1.5s infinite ease-in-out;
+}
+/* 점프 2번
+@keyframes updown {
+    0% {transform: translateY(0);}
+    30% {transform: translateY(-10px);}
+    40% {transform: translateY(0);}
+    70% {transform: translateY(-10px);}
+    80% {transform: translateY(0);}
+} */
+@keyframes updown {
+    0% {transform: translateY(10px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(10px);}
+}
+/*!-------------정보-----------*/
+#name {
+    font-weight: 500;
+}
+.css{
+    font-weight: 400;
+}
+.info {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    margin: 20px;
+}
+
+.po {
+    margin: 20px;
+    gap: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.poketmon {
+    box-shadow: inset 0 0 13px rgb(175, 175, 175);
+    margin: 10px;
+
+    border-radius: 20px;
+}
+
+/*!-----------버튼-----------*/
+.button {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#re, #evo {
+    border: 1px solid #666;
+    height: auto;
+    width: 100px;
+    text-align: center;
+    border-radius: 50px;
+    user-select: none;
+    font-weight: 400;
+    background-color: #909090;
+    color: white;
+}
