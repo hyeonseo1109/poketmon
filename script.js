@@ -11,6 +11,7 @@ const types = document.getElementById("types")
 const moves = document.getElementById("moves")
 const stats = document.getElementById("stats")
 const evoLight = document.getElementById("evoLight")
+const poketball = document.getElementById("poketball")
 
 const statName = {
     hp: "체력",
@@ -27,16 +28,24 @@ let currentPokemonName = '';    //현재 보여주는 포겟몬 이름
 
 
 
-//! 진화체인의 모든 진화된 포켓몬 이름들을 배열로 뽑음 (재귀함수)
-function getAllEvos(url) {  //처음 url에는 영어 이름, species에 들어가면 한글 이름이 있음. 
-    let evos = [url.species.name];    // 1) 현재 포켓몬의 이름을 넣음
-    if (url.evolves_to.length > 0) {
-        url.evolves_to.forEach(evo => {   // 2) 다음 단계도 있으면 다시 함수 불러와서 또 이름 넣음
-            evos = [...evos, ...getAllEvos(evo)];
-        });
+function getAllEvosSimple(chain) {
+    let evos = [];  //진화이름 담을 배열
+
+    while (chain) {   //참인 동안 계속 반복
+        evos.push(chain.species.name);  //종이름을 배열에 집어넣음
+
+        if (chain.evolves_to.length > 0) {  // 만약 다음 진화 단계가 있으면
+            chain = chain.evolves_to[0];   //다음 진화 단계 중 첫 번째 것으로 chain을 바꿔줌.
+        } else {
+            chain = null;  // 더 이상 진화가 없으면 거짓으로 종료.
+        }
     }
-    return evos;    // 3) 전체 진화하는애들 이름이 들어 있는 배열을 반환함.
+
+    return evos;
 }
+
+
+
 
 //! -1) 들어가면 랜덤하게 숫자를 선택 (1~1000)
 function random () { 
@@ -149,7 +158,6 @@ evo.onclick = () => {
         evo.style.display = "none";
     }
 }
-
 
 
 random();   //처음에 버튼을 누르지 않아도 함수 실행

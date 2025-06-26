@@ -1,4 +1,21 @@
-/* {
+const chain = {
+    species: { name: "pichu" },
+    evolves_to: [
+        {
+        species: { name: "pikachu" },
+        evolves_to: [
+            {
+            species: { name: "raichu" },
+            evolves_to: []
+            }
+        ]
+        }
+    ]
+};
+
+
+
+{
     "id": 10,
         "baby_trigger_item": null,
             "chain": {
