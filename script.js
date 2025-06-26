@@ -10,6 +10,7 @@ const information = document.getElementById("information")
 const types = document.getElementById("types")
 const moves = document.getElementById("moves")
 const stats = document.getElementById("stats")
+const evoLight = document.getElementById("evoLight")
 
 const statName = {
     hp: "체력",
@@ -23,6 +24,9 @@ const statName = {
 let evoNames = [];  // 진화 이름 전체 저장용 배열
 let evoIndex = 0;   // 현재 보여주는 진화 인덱스
 let currentPokemonName = '';    //현재 보여주는 포겟몬 이름
+
+let isEvo = false;
+
 
 //! 진화체인의 모든 진화된 포켓몬 이름들을 배열로 뽑음 (재귀함수)
 function getAllEvos(url) {  //처음 url에는 영어 이름, species에 들어가면 한글 이름이 있음. 
@@ -113,6 +117,11 @@ evo.onclick = () => {
     // 다음 진화가 있으면 evoIndex 증가시키고 해당 포켓몬 정보 로드
     if (evoIndex < evoNames.length - 1) {   //아직 다음 진화가 남아있을 때.
         evoIndex++;     
+        evoLight.style.display = "flex";
+        setTimeout( () => {
+            evoLight.style.display = "none";
+        }, 800)
+        
         const realname = evoNames[evoIndex].toLowerCase(); //진화이름 배열에서 진화 몇 번째인지에 따라 이름을 가져옴.
         fetch(`https://pokeapi.co/api/v2/pokemon/${realname}`)  //url에서 숫자 아이디 대신 이름으로 찾을 수도 있음. but, 대문자 섞이면 못찾으니 소문자화 하기
             .then(data => data.json())

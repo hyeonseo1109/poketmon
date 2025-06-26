@@ -64,6 +64,7 @@ body {
     border-bottom: 1px solid black;
     height: 350px;
     width: 100%;
+    position: relative;
 }
 
 /*!--------포켓볼---------*/
@@ -132,6 +133,8 @@ body {
     height: 200px;
     width: 200px;
     animation: updown 1.5s infinite ease-in-out;
+    position: relative;
+    z-index: 10;
 }
 /* 점프 2번
 @keyframes updown {
@@ -171,7 +174,7 @@ body {
 .poketmon {
     box-shadow: inset 0 0 13px rgb(175, 175, 175);
     margin: 10px;
-
+    width: 324px;
     border-radius: 20px;
 }
 
@@ -184,7 +187,7 @@ body {
 }
 
 #re, #evo {
-    border: 1px solid #666;
+    border: 1px solid rgb(35, 54, 255);
     height: auto;
     width: 100px;
     text-align: center;
@@ -193,4 +196,26 @@ body {
     font-weight: 400;
     background-color: #909090;
     color: white;
+}
+
+.evoLight {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    border-radius: 100%;
+    left: 105px;
+    top: 145px;
+    z-index: 8;
+    display: none;
+    opacity: 0.6;
+    animation: evoLightColor 0.4s infinite ease-in-out
+}
+
+@keyframes evoLightColor {
+    0%   { background-color: rgb(0, 100, 255); box-shadow: 0 0 20px 10px rgb(0, 100, 255); }   
+    20%  { background-color: rgb(87, 207, 255); box-shadow: 0 0 20px 10px rgb(87, 207, 255); } 
+    30%  { background-color: rgb(232, 179, 255); box-shadow: 0 0 20px 10px rgb(232, 179, 255); } 
+    50%  { background-color: rgb(255, 255, 255); box-shadow: 0 0 20px 10px rgb(255, 255, 255); } 
+    80%  { background-color: rgb(87, 255, 235); box-shadow: 0 0 20px 10px rgb(87, 255, 235); }  
+    100% { background-color: rgb(0, 100, 255); box-shadow: 0 0 20px 10px rgb(0, 100, 255); }    
 }
