@@ -25,7 +25,6 @@ let evoNames = [];  // 진화 이름 전체 저장용 배열
 let evoIndex = 0;   // 현재 보여주는 진화 인덱스
 let currentPokemonName = '';    //현재 보여주는 포겟몬 이름
 
-let isEvo = false;
 
 
 //! 진화체인의 모든 진화된 포켓몬 이름들을 배열로 뽑음 (재귀함수)
